@@ -1,5 +1,10 @@
 import 'dotenv/config';
 
+// ── Startup guard: refuse to boot in production with an insecure default secret ──
+if (process.env.NODE_ENV === 'production' && !process.env.JWT_SECRET) {
+  throw new Error('JWT_SECRET must be set in production. Refusing to start with an insecure fallback.');
+}
+
 export const ENV = {
   PORT: process.env.PORT || 5000,
   NODE_ENV: process.env.NODE_ENV || 'development',

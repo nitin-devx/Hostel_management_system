@@ -7,6 +7,9 @@ const sequelize = new Sequelize(DB.NAME, DB.USER, DB.PASSWORD, {
   port: DB.PORT,
   dialect: 'postgres',
   logging: ENV.NODE_ENV === 'development' ? (msg) => logger.debug(msg) : false,
+  dialectOptions: ENV.NODE_ENV === 'production'
+    ? { ssl: { require: true, rejectUnauthorized: false } }
+    : {},
   pool: {
     max: 10,
     min: 0,
