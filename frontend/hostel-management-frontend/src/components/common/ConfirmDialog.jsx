@@ -1,4 +1,4 @@
-import Modal from './modal.jsx';
+import Modal from './Modal.jsx';
 
 const ConfirmDialog = ({ isOpen, onClose, onConfirm, title = 'Confirm Action', message, confirmText = 'Confirm', danger = false, loading = false }) => (
   <Modal isOpen={isOpen} onClose={onClose} title={title} size="sm">
